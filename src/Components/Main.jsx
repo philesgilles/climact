@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as queryString from 'query-string'
+import Levers from './Levers/Levers'
+
+import './Main.css'
 
 
 const Main = props => {
@@ -35,8 +38,8 @@ const Main = props => {
    ,[])
 
    return (
-   <div>
-      { props.levers.map((lever, i) => <p key={i}>{lever.value}</p>) }
+   <div className='main'>
+      <Levers levers={props.levers}/>
    </div>
    )
 }
