@@ -1,49 +1,37 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import * as QueryString from "query-string";
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-const Test = props => {
-  console.log(props);
-  const params = QueryString.parse(props.location.search);
-  // Get parameters from URL
-  useEffect(
-    () => {
-      // If there are "code params, set the levers
-      if (params.preset) {
-        console.log("preset loaded", params.preset);
-      } else if (params.code) {
-        props.setLeversState(params.code.split(""));
-      }
-    }, // eslint-disable-next-line
-    [] // Run UseEffect only Once
-  );
+const Main = props => {
 
-  const click = () => {
-    props.history.push({ pathname: "/", search: "?aaa=bbb" });
-  };
+   useEffect(async () => {
+      const response = await fetch('http://54.93.129.246:5000/api/v1.0/levers', { method: 'GET' })
+      const fetchedLevers = await response.json()
+      fetchedLevers.forEach(e => {
+         e.value = '00'
+      });
+      console.table(fetchedLevers)
 
-  return (
-    <div>
-      <p>{props.leversState}</p>
-      <p onClick={() => props.setLeversState([1, 2, 3])}>Click Me</p>
-      <p onClick={click}>no click Me</p>
-    </div>
-  );
-};
+      props.setAllLevers(fetchedLevers)
+   },[])
 
-const mapsStateToProps = state => {
-  return {
-    leversState: state.leversValue
-  };
-};
+   return (
+   <div>
+      {props.levers.map((lever, i) => <p key={i}>{lever.value}</p>)}
+   </div>
+   )
+}
+
+const mapStateToProps = state => {
+   return {
+      levers: state.levers
+   }
+}
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setLeversState: value => dispatch({ type: "SET_LEVERS", payload: value })
-  };
-};
+   return {
+      setAllLevers: value => dispatch({type: 'SET_ALL_LEVERS', payload: value})
+   }
+}
 
-export default connect(
-  mapsStateToProps,
-  mapDispatchToProps
-)(Test);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

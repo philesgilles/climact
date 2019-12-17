@@ -1,16 +1,16 @@
 const initialState = {
-  leversValue: []
-};
+   levers: []
+}
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "SET_LEVERS":
-      return {
-        leversValue: action.payload
-      };
-    default:
-      return state;
-  }
-};
+   switch(action.type){
+      case 'SET_ALL_LEVERS':
+         return {
+            levers: action.payload
+         }
+      default : 
+         return state
+   }
+}
 
-export default reducer;
+export default reducer
