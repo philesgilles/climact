@@ -1,0 +1,7 @@
+footer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: #606060;
+    color: #fafafa;
+}
