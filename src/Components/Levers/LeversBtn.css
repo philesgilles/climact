@@ -1,0 +1,12 @@
+.levers__btn {
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid currentColor;
+    text-align: center;
+    width: 3ch;
+    height: 3ch;
+}
+.levers__selected {
+    background-color: #606060;
+    color: #fafafa;
+}

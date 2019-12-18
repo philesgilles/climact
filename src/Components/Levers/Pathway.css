@@ -1,0 +1,19 @@
+.pathway__header {
+    padding-bottom: 15px;
+    font-size: 1.25rem;
+}
+.pathway__body {
+    background: #d4d4d4;
+    padding: 15px;
+    border-radius: 5px;
+}
+.pathway__body select {
+    cursor: pointer;
+    user-select: none;
+	background-color: transparent;
+	padding: 10px 10px 10px 0;
+	border-radius: 0;
+	border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+.pathway__body option[default] {display: none;}
