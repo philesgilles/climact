@@ -9,7 +9,6 @@ const Pathway = () => {
       <div>
         <p className="lead">Choose an example pathway</p>
         <select>
-          <option value="" default selected disabled>Choose an example pathway</option>
           {PATHWAYS.map((pathway, i) => <option value={String(i)} key={i}>{pathway}</option>)}
         </select>
       </div>
