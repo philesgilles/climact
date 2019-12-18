@@ -1,4 +1,12 @@
 .main {
-   display: grid;
-   grid-template-columns: minmax(300px, 30%) auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 30%) auto;
+  background: #f6f6f6;
+  padding-top: 20px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
 }
