@@ -28,6 +28,7 @@ export default levers => {
         leversSorted[headline][group1][group2].forEach(e => {
           delete e.group_2;
         });
+
         // if (leversSorted[headline][group1][group2].length > 1) {
         //   console.log(leversSorted[headline][group1][group2]);
         // } else {
