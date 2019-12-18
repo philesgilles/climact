@@ -1,49 +1,60 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import * as QueryString from "query-string";
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import * as queryString from 'query-string'
+import Levers from './Levers/Levers'
 
-const Test = props => {
-  console.log(props);
-  const params = QueryString.parse(props.location.search);
-  // Get parameters from URL
-  useEffect(
-    () => {
-      // If there are "code params, set the levers
-      if (params.preset) {
-        console.log("preset loaded", params.preset);
-      } else if (params.code) {
-        props.setLeversState(params.code.split(""));
+import './Main.css'
+
+
+const Main = props => {
+
+   // const urlValueTest = '10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010'
+
+   const apiCall = async () => {
+      const response = await fetch('http://54.93.129.246:5000/api/v1.0/levers', { method: 'GET' })
+      const fetchedLevers = await response.json()
+
+      let urlData = queryString.parse(props.location.search)
+      if (Object.keys(urlData).length > 0) {
+         urlData = urlData.levers.match(/[0-9]{1,2}/g)     
+
+         fetchedLevers.forEach((e, i) => {
+            e.value = urlData[i]
+         });
       }
-    }, // eslint-disable-next-line
-    [] // Run UseEffect only Once
-  );
+      else {
+         fetchedLevers.forEach(e => {
+            e.value = '00'
+         });
+      }
+      console.table(fetchedLevers)
 
-  const click = () => {
-    props.history.push({ pathname: "/", search: "?aaa=bbb" });
-  };
+      props.setAllLevers(fetchedLevers)
+   }
 
-  return (
-    <div>
-      <p>{props.leversState}</p>
-      <p onClick={() => props.setLeversState([1, 2, 3])}>Click Me</p>
-      <p onClick={click}>no click Me</p>
-    </div>
-  );
-};
+   useEffect(() => {
+      apiCall()
+   }
+   ,[])
 
-const mapsStateToProps = state => {
-  return {
-    leversState: state.leversValue
-  };
-};
+   return (
+   <div className='main'>
+      <Levers levers={props.levers}/>
+   </div>
+   )
+}
+
+const mapStateToProps = state => {
+   return {
+      levers: state.levers
+   }
+}
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setLeversState: value => dispatch({ type: "SET_LEVERS", payload: value })
-  };
-};
+   return {
+      setAllLevers: value => dispatch({type: 'SET_ALL_LEVERS', payload: value})
+   }
+}
 
-export default connect(
-  mapsStateToProps,
-  mapDispatchToProps
-)(Test);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
