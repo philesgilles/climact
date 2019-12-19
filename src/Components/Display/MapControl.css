@@ -1,0 +1,46 @@
+.map-control {
+  margin: 42px 40px 0;
+  background: #d4d4d4;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.map-control > div {
+  align-items: center;
+  padding: 5px;
+}
+
+.map-control-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.map-control div {
+  /* box-shadow: inset 12px 0px 12px -12px rgba(0, 0, 0, 0.45),
+    inset -12px 0px 12px -12px rgba(0, 0, 0, 0.45); */
+}
+
+.map-control-list li {
+  display: inline-block;
+  padding: 0 5px;
+  font-size: 20px;
+  border-left: 2px solid #999;
+  cursor: pointer;
+}
+
+.map-control-list li:first-child {
+  border-left: none;
+}
+
+li.selected {
+  border: solid 2px rgb(99, 99, 99);
+  background-color: rgb(99, 99, 99);
+  color: #dfdfdf;
+}
+
+.pointer {
+  cursor: pointer;
+}

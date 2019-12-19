@@ -4,9 +4,10 @@ import * as queryString from "query-string";
 import Levers from "./Levers/Levers";
 
 import "./Main.css";
+import MapControl from "./Display/MapControl";
+import MapDisplay from "./Display/MapDisplay";
 
 const Main = props => {
-
   // const urlValueTest = '10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010'
 
   const apiCall = async () => {
@@ -42,10 +43,13 @@ const Main = props => {
   return (
     <div className="main">
       <Levers levers={props.levers} />
+      <div>
+        <MapControl />
+        <MapDisplay />
+      </div>
     </div>
   );
 };
-
 
 const mapStateToProps = state => {
   return {
