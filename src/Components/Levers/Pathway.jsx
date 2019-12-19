@@ -1,23 +1,20 @@
 import React from "react";
 import { PATHWAYS } from "../../utils/constants";
+import Select from "react-select";
 
 import "./Pathway.css";
 const Pathway = () => {
+  const pathways = PATHWAYS.map(pathway => ({
+    value: pathway,
+    label: pathway
+  }));
+
   return (
     <div className="pathway">
       <h4>Pathway</h4>
       <div>
         <p className="lead">Choose an example pathway</p>
-        <select>
-          <option defaultValue disabled>
-            Choose an example pathway
-          </option>
-          {PATHWAYS.map((pathway, i) => (
-            <option value={String(i)} key={i}>
-              {pathway}
-            </option>
-          ))}
-        </select>
+        <Select defaultValue={pathways[0]} options={pathways} />
       </div>
     </div>
   );

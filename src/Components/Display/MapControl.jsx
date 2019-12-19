@@ -1,51 +1,54 @@
 import React, { useState } from "react";
-import { Animate } from "react-move";
-import { easeExpInOut } from "d3-ease";
+import Select from "react-select";
+import { MAP_CONTROL as mapTitles } from "../../utils/constants";
 
 import "./MapControl.css";
 const MapControl = () => {
   const [position, setPosition] = useState(0);
+  const [selectedTitle, setSelectedTitle] = useState(0);
+  const [selectedSubtitle, setSelectedSubtitle] = useState(
+    mapTitles[selectedTitle].subtitle[0]
+  );
 
-  const moveControls = direction => {
-    if (direction === "left") {
-      console.log("left ");
-      if (position > -120) {
-        return;
-      }
-      setPosition(position + 120);
-    } else if (direction === "right") {
-      console.log("right ");
-      setPosition(position - 120);
-    }
-    console.log(position);
+  const selectTitleHandler = async titleId => {
+    await setSelectedTitle(titleId);
+    console.log(mapTitles[titleId].subtitle[0]);
+    setSelectedSubtitle(mapTitles[titleId].subtitle[0]);
   };
 
+  const handleChange = e => {
+    setSelectedSubtitle(e.value);
+  };
+
+  const controlTitles = mapTitles.map((e, i) => (
+    <li
+      key={i}
+      onClick={() => selectTitleHandler(i)}
+      className={i === selectedTitle ? "selected" : ""}
+    >
+      {e.title}
+    </li>
+  ));
+
+  const controlSubTitles = mapTitles[selectedTitle].subtitle.map(subtitle => ({
+    value: subtitle,
+    label: subtitle
+  }));
+
+  // console.log("control :", controlSubTitles);
+  console.log("subtitle :", selectedSubtitle);
+  // console.log("title :", selectedTitle);
   return (
     <div className="map-control">
       <div>
-        <ul className="map-control-list">
-          <li className="selected">Emissions</li>
-          <li>Energy</li>
-          <li>Transport</li>
-          <li>Buildings</li>
-          <li>Industry</li>
-          <li>Land-use</li>
-          <li>Agriculture</li>
-          <li>Water</li>
-          <li>Minerals</li>
-          <li>Air</li>
-          <li>Climate</li>
-          <li>Jobs</li>
-          <li>Cost</li>
-          <li>World</li>
-        </ul>
+        <ul className="map-control-list">{controlTitles}</ul>
       </div>
       <div>
-        <select name="mapSelect" id="">
-          <option value="aaa">aaa</option>
-          <option value="bbb">bbb</option>
-          <option value="ccc">ccc</option>
-        </select>
+        <Select
+          onChange={handleChange}
+          value={{ value: selectedSubtitle, label: selectedSubtitle }}
+          options={controlSubTitles}
+        />
       </div>
     </div>
   );

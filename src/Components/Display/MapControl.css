@@ -5,7 +5,7 @@
   padding: 10px;
 }
 
-.map-control div {
+.map-control > div {
   align-items: center;
   padding: 5px;
 }
@@ -32,14 +32,13 @@
 }
 
 .map-control-list li:first-child {
-  border-right: none;
+  border-left: none;
 }
 
 li.selected {
   border: solid 2px rgb(99, 99, 99);
   background-color: rgb(99, 99, 99);
   color: #dfdfdf;
-  font-weight: bold;
 }
 
 .pointer {
