@@ -138,3 +138,11 @@ export const MAP_CONTROL = [
     ]
   }
 ];
+
+export const COUNTRIES = [
+  { name: "Europe", code: "EU" },
+  { name: "Belgium", code: "BE" },
+  { name: "Brussels", code: "BR" },
+  { name: "Flanders", code: "FL" },
+  { name: "Wallonia", code: "WA" }
+];

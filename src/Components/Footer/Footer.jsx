@@ -1,12 +1,12 @@
-import React from 'react'
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
-    return (
-        <footer>
-            Brought to you by CLIMACT
-        </footer>
-    )
-}
+  return (
+    <footer>
+      <p>Brought to you by CLIMACT</p>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

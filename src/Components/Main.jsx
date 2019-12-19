@@ -31,7 +31,7 @@ const Main = props => {
       });
     }
 
-    console.table(fetchedLevers)
+    console.table(fetchedLevers);
 
     props.setAllLevers(fetchedLevers);
   };
@@ -43,7 +43,8 @@ const Main = props => {
   return (
     <div className="main">
       <Levers levers={props.levers} />
-      <div>
+      <div className="display">
+        <h4>Selector :</h4>
         <MapControl />
         <MapDisplay />
       </div>

@@ -22,7 +22,7 @@ const MapDisplay = () => {
   const [series, setSeries] = useState(initialSeries);
   return (
     <div className="map-display">
-      <Chart options={options} series={series} type="line" width="100%" />;
+      <Chart options={options} series={series} type="line" height="400px" />
     </div>
   );
 };
