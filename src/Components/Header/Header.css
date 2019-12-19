@@ -24,7 +24,7 @@ header {
 .nav__link--title {
   margin-left: auto;
   margin-right: auto;
-  color: rgba(0, 0, 0, 0.87);
+  color: #3c3c3c;
 }
 
 .nav__link--title h1 {

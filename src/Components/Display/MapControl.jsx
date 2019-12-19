@@ -9,7 +9,10 @@ const MapControl = () => {
   const [selectedSubtitle, setSelectedSubtitle] = useState(
     mapTitles[selectedTitle].subtitle[0]
   );
-  const [selectedCountry, setSelectedCountry] = useState({value:COUNTRIES[0].code,label:COUNTRIES[0].name})
+  const [selectedCountry, setSelectedCountry] = useState({
+    value: COUNTRIES[0].code,
+    label: COUNTRIES[0].name
+  });
 
   const selectTitleHandler = async titleId => {
     await setSelectedTitle(titleId);
@@ -26,12 +29,10 @@ const MapControl = () => {
   };
 
   const controlTitles = mapTitles.map((e, i) => (
-    <li
-      key={i}
-      onClick={() => selectTitleHandler(i)}
-      className={i === selectedTitle ? "selected" : ""}
-    >
-      {e.title}
+    <li key={i} onClick={() => selectTitleHandler(i)}>
+      <div className={i === selectedTitle ? "inner selected" : "inner"}>
+        {e.title}
+      </div>
     </li>
   ));
 
@@ -44,15 +45,27 @@ const MapControl = () => {
     label: country.name,
     value: country.code
   }));
-  return <div className="map-control">
+  return (
+    <div className="map-control">
       <div>
         <ul className="map-control-list">{controlTitles}</ul>
       </div>
       <div className="selectors">
-        <Select className="zmax" onChange={handleSubtitleChange} value={{ value: selectedSubtitle, label: selectedSubtitle }} options={controlSubTitles} />
-        <Select className="zmax"  value={selectedCountry} options={countriesOptions} onChange={handleCountryChange} />
+        <Select
+          className="zmax"
+          onChange={handleSubtitleChange}
+          value={{ value: selectedSubtitle, label: selectedSubtitle }}
+          options={controlSubTitles}
+        />
+        <Select
+          className="zmax"
+          value={selectedCountry}
+          options={countriesOptions}
+          onChange={handleCountryChange}
+        />
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default MapControl;
