@@ -8,6 +8,8 @@ export default levers => {
     leversSorted[headline].forEach(e => {
       if (e.group_1 == null) {
         e.group_1 = e.title;
+        e.group_2 = null;
+        e.title = null;
       }
       delete e.headline;
     });

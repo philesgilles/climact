@@ -30,6 +30,9 @@ const Main = props => {
         e.id = i;
       });
     }
+
+    console.table(fetchedLevers)
+
     props.setAllLevers(fetchedLevers);
   };
 
