@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { MAP_CONTROL as mapTitles } from "../../utils/constants";
+import { MAP_CONTROL as mapTitles, COUNTRIES } from "../../utils/constants";
 
 import "./MapControl.css";
 const MapControl = () => {
@@ -9,6 +9,7 @@ const MapControl = () => {
   const [selectedSubtitle, setSelectedSubtitle] = useState(
     mapTitles[selectedTitle].subtitle[0]
   );
+  const [selectedCountry, setSelectedCountry] = useState({value:COUNTRIES[0].code,label:COUNTRIES[0].name})
 
   const selectTitleHandler = async titleId => {
     await setSelectedTitle(titleId);
@@ -16,8 +17,12 @@ const MapControl = () => {
     setSelectedSubtitle(mapTitles[titleId].subtitle[0]);
   };
 
-  const handleChange = e => {
+  const handleSubtitleChange = e => {
     setSelectedSubtitle(e.value);
+  };
+
+  const handleCountryChange = e => {
+    setSelectedCountry(e);
   };
 
   const controlTitles = mapTitles.map((e, i) => (
@@ -35,23 +40,19 @@ const MapControl = () => {
     label: subtitle
   }));
 
-  // console.log("control :", controlSubTitles);
-  console.log("subtitle :", selectedSubtitle);
-  // console.log("title :", selectedTitle);
-  return (
-    <div className="map-control">
+  const countriesOptions = COUNTRIES.map(country => ({
+    label: country.name,
+    value: country.code
+  }));
+  return <div className="map-control">
       <div>
         <ul className="map-control-list">{controlTitles}</ul>
       </div>
-      <div>
-        <Select
-          onChange={handleChange}
-          value={{ value: selectedSubtitle, label: selectedSubtitle }}
-          options={controlSubTitles}
-        />
+      <div className="selectors">
+        <Select className="zmax" onChange={handleSubtitleChange} value={{ value: selectedSubtitle, label: selectedSubtitle }} options={controlSubTitles} />
+        <Select className="zmax"  value={selectedCountry} options={countriesOptions} onChange={handleCountryChange} />
       </div>
-    </div>
-  );
+    </div>;
 };
 
 export default MapControl;

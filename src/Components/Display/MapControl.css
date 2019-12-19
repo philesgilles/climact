@@ -1,8 +1,9 @@
 .map-control {
-  margin: 42px 40px 0;
-  background: #d4d4d4;
+  background: #add6e4;
+  border: 2px solid #ababab;
   border-radius: 5px;
   padding: 10px;
+  box-shadow: 0 0 10px #c6c5c5;
 }
 
 .map-control > div {
@@ -36,11 +37,21 @@
 }
 
 li.selected {
-  border: solid 2px rgb(99, 99, 99);
-  background-color: rgb(99, 99, 99);
-  color: #dfdfdf;
+  border: solid 2px rgb(130, 129, 129);
+  background-color: rgb(130, 130, 130);
+  color: #f0eded;
 }
 
 .pointer {
   cursor: pointer;
+}
+
+.zmax {
+  z-index: 12 !important;
+}
+
+.selectors {
+  display: grid;
+  grid-template-columns: 65% auto;
+  grid-column-gap: 10px;
 }

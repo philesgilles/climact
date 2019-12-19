@@ -11,12 +11,11 @@ const Pathway = () => {
 
   return (
     <div className="pathway">
-      <h4>Pathway</h4>
+      <h4>Pathway :</h4>
       <div>
         <p className="lead">Choose an example pathway</p>
 
         <Select defaultValue={pathways[0]} options={pathways} />
-
       </div>
     </div>
   );
