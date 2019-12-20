@@ -16,17 +16,52 @@ const Levers = props => {
 
     levers = Object.keys(leversSorted).map(headline => (
       <LeversSelector key={headline} title={headline} type="headline">
-        {Object.keys(leversSorted[headline]).map(groupe1 => (
-          <LeversSelector key={groupe1} title={groupe1} type="groupe-1">
-            {Object.keys(leversSorted[headline][groupe1]).map(groupe2 => (
-              <LeversSelector key={groupe2} title={groupe2} type="groupe-2">
-                {leversSorted[headline][groupe1][groupe2].map(e => (
-                  <LeversSelector key={e.title} title={e.title} type="title" />
-                ))}
-              </LeversSelector>
-            ))}
-          </LeversSelector>
-        ))}
+			{Object.keys(leversSorted[headline]).map(groupe1 => {
+
+				if (groupe1 !== headline) {
+					return <LeversSelector key={groupe1} title={groupe1} type="groupe-1">
+						{Object.keys(leversSorted[headline][groupe1]).map(groupe2 => {
+							
+							if (groupe2 !== groupe1) {
+								return <LeversSelector key={groupe2} title={groupe2} type="groupe-2">
+									
+									{leversSorted[headline][groupe1][groupe2].map(e => (
+										<LeversSelector key={e.title} title={e.title} type="title" />
+									))}
+
+								</LeversSelector>
+							}
+							else {
+								return leversSorted[headline][groupe1][groupe2].map(e => (
+									<LeversSelector key={e.title} title={e.title} type="title" />
+								))
+							}
+							
+						})}
+					</LeversSelector>
+				}
+				else {
+					Object.keys(leversSorted[headline][groupe1]).map(groupe2 => {
+							
+						if (groupe2 !== groupe1) {
+							return <LeversSelector key={groupe2} title={groupe2} type="groupe-2">
+								
+								{leversSorted[headline][groupe1][groupe2].map(e => (
+									<LeversSelector key={e.title} title={e.title} type="title" />
+								))}
+
+							</LeversSelector>
+						}
+						else {
+							return leversSorted[headline][groupe1][groupe2].map(e => (
+								<LeversSelector key={e.title} title={e.title} type="title" />
+							))
+						}
+					
+					})
+				}
+
+			})}
       </LeversSelector>
     ));
   }
