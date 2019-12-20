@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import "./LeversBtn.css";
 
-const LeversBtn = ({ initialValue, isActive, handleLeversSelected }) => {
+const LeversBtn = ({ initialValue, isActive, handleLeversSelected, value }) => {
+  console.log("btn:", value);
   const [leversValue, setLeversValue] = useState(initialValue);
 
   const handleClick = initialValue => {
