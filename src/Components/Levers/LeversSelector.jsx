@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import LeversBtn from "./LeversBtn";
+import LeversBtn from "./LeversBtn/LeversBtn";
 
 import "./LeversSelector.css";
 const LeversSelector = props => {
   const [leversValue, setLeversValue] = useState(props.level);
   const [show, setShow] = useState(false);
+
+  const handleLeversSelected = (initialValue) => setLeversValue(initialValue)
 
   let type = props.type;
   let title = props.title;
@@ -37,49 +39,26 @@ const LeversSelector = props => {
         </div>
 
         <div className="all-selectors">
-          <span
-            onClick={() => setLeversValue("0")}
-            className={
-              leversValue === "0"
-                ? "leverSelected simple_level"
-                : "simple_level"
-            }
-          >
-            0
-          </span>
-
-          <span
-            onClick={() => setLeversValue("1")}
-            className={
-              leversValue === "1"
-                ? "leverSelected simple_level"
-                : "simple_level"
-            }
-          >
-            1
-          </span>
-
-          <span
-            onClick={() => setLeversValue("2")}
-            className={
-              leversValue === "2"
-                ? "leverSelected simple_level"
-                : "simple_level"
-            }
-          >
-            2
-          </span>
-
-          <span
-            onClick={() => setLeversValue("3")}
-            className={
-              leversValue === "3"
-                ? "leverSelected simple_level"
-                : "simple_level"
-            }
-          >
-            3
-          </span>
+        <LeversBtn 
+            initialValue={0} 
+            isActive={leversValue === 0}
+            handleLeversSelected={handleLeversSelected}
+        />
+        <LeversBtn 
+            initialValue={1} 
+            isActive={leversValue === 1}
+            handleLeversSelected={handleLeversSelected}
+        />
+        <LeversBtn 
+            initialValue={2} 
+            isActive={leversValue === 2}
+            handleLeversSelected={handleLeversSelected}
+        />
+        <LeversBtn 
+            initialValue={3} 
+            isActive={leversValue === 3}
+            handleLeversSelected={handleLeversSelected}
+        />
         </div>
       </div>
 
