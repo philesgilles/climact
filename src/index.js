@@ -8,14 +8,14 @@ import * as serviceWorker from "./serviceWorker";
 import reducer from "./store/reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(reducer, composeWithDevTools())
+const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>, 
-  document.getElementById('root')
-)
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

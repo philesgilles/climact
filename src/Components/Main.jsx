@@ -8,12 +8,11 @@ import MapControl from "./Display/MapControl";
 import MapDisplay from "./Display/MapDisplay";
 
 const Main = props => {
-
   const apiCall = async () => {
     const response = await fetch("http://54.93.129.246:5000/api/v1.0/levers", {
       method: "GET"
     });
-    const fetchedLevers = await response.json();
+    let fetchedLevers = await response.json();
 
     let urlData = queryString.parse(props.location.search);
     if (Object.keys(urlData).length > 0) {
@@ -25,16 +24,17 @@ const Main = props => {
       });
     } else {
       fetchedLevers.forEach((e, i) => {
-        e.value = "00";
+        e.value = 10;
         e.id = i;
       });
     }
-
     props.setAllLevers(fetchedLevers);
   };
 
   useEffect(() => {
-    apiCall();
+    if (props.levers.length < 1) {
+      apiCall();
+    }
     //props.setAllLevers(FAKE_LEVERS);
   }, []);
 
@@ -52,7 +52,7 @@ const Main = props => {
 
 const mapStateToProps = state => {
   return {
-    levers: state.levers
+    levers: state.stateLevers
   };
 };
 
@@ -62,7 +62,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
