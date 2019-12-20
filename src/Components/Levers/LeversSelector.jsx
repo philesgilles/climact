@@ -27,14 +27,14 @@ const LeversSelector = props => {
   };
 
   return (
-    <div className={type === "title" ? "pl-2" : "pl"}>
-      <div className="d-flex mb-5">
-        <div className={type}>
+    <div className={type === "title" ? "pl-2" : ""}>
+      <div className={"lever d-flex mb-5 " + type}>
+        <div className="pointer" onClick={dropDown}>
           {props.children ? (
             show ? (
-              <i onClick={dropDown} className="fas fa-chevron-down mr"></i>
+              <i className="fas fa-chevron-down mr"></i>
             ) : (
-              <i onClick={dropDown} className="fas fa-chevron-right mr"></i>
+              <i className="fas fa-chevron-right mr"></i>
             )
           ) : (
             ""
