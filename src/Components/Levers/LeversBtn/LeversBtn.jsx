@@ -7,12 +7,15 @@ const LeversBtn = ({ initialValue, isActive, handleLeversSelected }) => {
 
   const handleClick = initialValue => {
     if (initialValue === 0) setLeversValue(0);
-    else
+    else if (isActive)
       setLeversValue(leversValue =>
         leversValue < initialValue - 0.8
           ? initialValue
           : (leversValue - 0.1).toFixed(1)
       );
+    else {
+      setLeversValue(initialValue)
+    }
     handleLeversSelected(initialValue, leversValue);
   };
 

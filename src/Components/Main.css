@@ -20,3 +20,9 @@ h4 {
   font-weight: bold;
   margin-bottom: 5px;
 }
+
+.pointer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
