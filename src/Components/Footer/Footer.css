@@ -1,6 +1,6 @@
 .footer {
   display: fixed !important;
-  bottom: -10px;
+  bottom: 0;
   width: 100vw;
   text-align: center;
   background-color: #606060;
