@@ -17,6 +17,11 @@
   width: 8px;
 }
 
+/* Track */
+.all-levers::-webkit-scrollbar-track {
+  background: rgb(247, 246, 246); 
+}
+
 /* Handle */
 .all-levers::-webkit-scrollbar-thumb {
   background: #ababab;
@@ -26,3 +31,4 @@
 .all-levers::-webkit-scrollbar-thumb:hover {
   background: #bababa;
 }
+

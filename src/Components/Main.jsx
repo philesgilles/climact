@@ -7,7 +7,6 @@ import "./Main.css";
 import MapControl from "./Display/MapControl";
 import MapDisplay from "./Display/MapDisplay";
 
-import { FAKE_LEVERS } from "../utils/constants";
 const Main = props => {
 
   const apiCall = async () => {
@@ -30,8 +29,6 @@ const Main = props => {
         e.id = i;
       });
     }
-
-    console.table(fetchedLevers);
 
     props.setAllLevers(fetchedLevers);
   };
