@@ -7,9 +7,9 @@ export default levers => {
   Object.keys(leversSorted).forEach(headline => {
     leversSorted[headline].forEach(e => {
       if (e.group_1 == null) {
-        e.group_1 = e.title;
-        e.group_2 = null;
-        e.title = null;
+        e.group_1 = e.headline;
+        //e.group_2 = null;
+        //e.title = null;
       }
       delete e.headline;
     });
@@ -17,7 +17,7 @@ export default levers => {
     Object.keys(leversSorted[headline]).forEach(group1 => {
       leversSorted[headline][group1].forEach((e, i) => {
         if (e.group_2 == null) {
-          e.group_2 = e.title;
+          e.group_2 = e.group_1;
         }
         delete e.group_1;
       });
