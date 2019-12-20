@@ -26,8 +26,8 @@
 .map-control-list li {
   display: inline-block;
   padding: 0 0 0 5px;
-  font-size: 20px;
-  border-left: 2px solid rgb(73, 94, 109);
+  font-size: 16px;
+  border-left: 1px solid rgb(73, 94, 109);
   cursor: pointer;
   margin: 0 4px 3px 0px;
 }
