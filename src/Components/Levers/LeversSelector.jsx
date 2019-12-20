@@ -21,7 +21,7 @@ const LeversSelector = props => {
   };
 
   return (
-    <div className="pl">
+    <div className={type === "title" ? "pl-2" : "pl"}>
       <div className="d-flex mb-5">
         <div className={type}>
           {props.children ? (
