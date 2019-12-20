@@ -6,3 +6,31 @@
   margin-bottom: 20px;
   border-bottom: rgb(34, 13, 13);
 }
+
+.all-levers {
+  overflow-y: auto;
+  height: calc(100% - 40px);
+  padding: 20px 10px 20px 0;
+}
+
+.levers-wrapper {
+  height: calc(100% - 160px);
+  border-top: 2px solid #ababaa;
+  border-bottom: 2px solid #ababaa;
+}
+
+/* width */
+.all-levers::-webkit-scrollbar {
+  width: 8px;
+}
+
+ 
+/* Handle */
+.all-levers::-webkit-scrollbar-thumb {
+  background: #ababab; 
+}
+
+/* Handle on hover */
+.all-levers::-webkit-scrollbar-thumb:hover {
+  background: #bababa; 
+}
