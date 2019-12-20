@@ -16,16 +16,20 @@
   padding-left: 0.5rem;
 }
 
+.pl-2 {
+  padding-left: 2rem;
+}
+
 .all-selectors > * {
   display: inline-block;
 }
 
-.all-selectors span {
+/* .all-selectors span {
   border: 1px solid rgb(131, 131, 131);
   padding: 2px 5px;
   margin: 2px;
   cursor: pointer;
-}
+} */
 
 .d-flex {
   display: flex;
