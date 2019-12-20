@@ -68,8 +68,9 @@ const Levers = props => {
   return (
     <div className="levers">
       <Pathway />
-      <hr />
-      <div className="all-levers">{levers}</div>
+		<div className="levers-wrapper">
+			<div className="all-levers">{levers}</div>
+		</div>
     </div>
   );
 };
