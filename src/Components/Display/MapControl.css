@@ -47,10 +47,6 @@
   padding: 3px 5px 5px;
 }
 
-.pointer {
-  cursor: pointer;
-}
-
 .zmax {
   z-index: 12 !important;
 }

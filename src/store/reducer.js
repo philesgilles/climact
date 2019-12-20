@@ -3,6 +3,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+
   const { type, payload } = action;
   let newLevers = [...state.stateLevers];
   switch (type) {
