@@ -13,6 +13,33 @@ export const PATHWAYS = [
   "Ambitious"
 ];
 
+export const FAKE_LEVERS = [
+  {
+    headline: "Headline",
+    group_1: "le nom du groupe 1",
+    group_2: "ceci est le groupe 2",
+    title: "Le nom du super levier",
+    id: 0,
+    level: 2
+  },
+  {
+    headline: "wazaa2",
+    group_1: null,
+    group_2: null,
+    title: "Le nom du super levier 2",
+    id: 0,
+    level: 2
+  },
+  {
+    headline: "Head My 3",
+    group_1: "le nom du groupe 1",
+    group_2: null,
+    title: "Le nom du super levier 3",
+    id: 0,
+    level: 2
+  }
+];
+
 export const URL_TEST_VALUE =
   "10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010";
 
