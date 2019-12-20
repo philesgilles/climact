@@ -22,7 +22,7 @@ const LeversBtn = ({initialValue, isActive, handleLeversSelected}) => {
             className={isActive ? "levers__selected levers__btn" : "levers__btn"} 
             onClick={() => handleClick(initialValue)}
         >
-            {leversValue}
+            {isActive ? leversValue : initialValue}
         </span>
     )
 
