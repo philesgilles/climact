@@ -1,0 +1,6 @@
+main {
+    display: grid;
+    grid-template-columns: minmax(50px, auto) 1fr;
+    grid-gap: 15px;
+    padding: 30px 15px 15px 15px;
+}

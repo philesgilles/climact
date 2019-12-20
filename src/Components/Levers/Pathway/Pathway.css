@@ -1,0 +1,13 @@
+.pathway__header {
+    font-size: 1rem;
+}
+.pathway__body {
+    background-color: #add6e4;
+    padding: 15px;
+    border-radius: 5px;
+}
+.pathway__inputs {
+    cursor: pointer;
+    user-select: none;
+}
+.pathway__inputs option:first-child {display: none;}
