@@ -7,6 +7,7 @@
   border-bottom: rgb(34, 13, 13);
 }
 
+
 .all-levers {
   overflow-y: auto;
   height: calc(100% - 40px);
@@ -34,3 +35,4 @@
 .all-levers::-webkit-scrollbar-thumb:hover {
   background: #bababa; 
 }
+
