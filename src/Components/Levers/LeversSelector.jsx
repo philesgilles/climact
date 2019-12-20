@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import LeversBtn from "./LeversBtn/LeversBtn";
+import { connect } from "react-redux";
 
 import "./LeversSelector.css";
 const LeversSelector = props => {
-  const [leversValue, setLeversValue] = useState(props.level);
+  const [leversValue, setLeversValue] = useState(props.value);
   const [show, setShow] = useState(false);
   const [selectedLevers, setSelectedLevers] = useState("");
+
   const handleLeversSelected = (selectedLevers, leversValue) => {
-    console.log(selectedLevers, leversValue);
     setSelectedLevers(selectedLevers);
     setLeversValue(leversValue);
+    if (props.type === "title") {
+      props.setThisLevers(props.id, +leversValue * 10);
+    } else {
+      props.setGroupLevers(props.type, props.title, +leversValue * 10);
+    }
   };
-
   let type = props.type;
   let title = props.title;
 
@@ -50,6 +55,7 @@ const LeversSelector = props => {
           />
           <LeversBtn
             initialValue={1}
+            value={leversValue}
             isActive={selectedLevers === 1}
             handleLeversSelected={handleLeversSelected}
           />
@@ -71,4 +77,22 @@ const LeversSelector = props => {
   );
 };
 
-export default LeversSelector;
+// const mapStateToProps = state => {
+//   return {
+//     levers: state.levers
+//   };
+// };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setThisLevers: (id, value) =>
+      dispatch({ type: "SET_THIS_LEVERS", payload: { id: id, value: value } }),
+    setGroupLevers: (group, title, value) =>
+      dispatch({
+        type: "SET_GROUP_LEVERS",
+        payload: { group: group, title: title, value: value }
+      })
+  };
+};
+
+export default connect(null, mapDispatchToProps)(LeversSelector);
