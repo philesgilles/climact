@@ -4,6 +4,14 @@
   font-weight: bold;
 }
 
+.all-selectors {
+  min-width: fit-content;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
 .all-selectors > * {
   display: inline-block;
 }
@@ -19,4 +27,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.expand-button {
+  padding: 3px 4px;
+  margin-right: 10px;
+  background-color: #d9eaf0;
+  border: 1px solid #ababab;
+  width: 20px;
+}
+
+.mr {
+  margin-right: 5px;
 }

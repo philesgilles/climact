@@ -1,0 +1,62 @@
+.map-control {
+  background: #add6e4;
+  border: 1px solid #ababab;
+  padding: 10px;
+  box-shadow: 0 0 10px #c6c5c5;
+}
+
+.map-control > div {
+  align-items: center;
+  padding: 5px;
+}
+
+.map-control-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.map-control div {
+  /* box-shadow: inset 12px 0px 12px -12px rgba(0, 0, 0, 0.45),
+    inset -12px 0px 12px -12px rgba(0, 0, 0, 0.45); */
+}
+
+.map-control-list li {
+  display: inline-block;
+  padding: 0 0 0 5px;
+  font-size: 16px;
+  border-left: 1px solid rgb(73, 94, 109);
+  cursor: pointer;
+  margin: 0 4px 3px 0px;
+}
+
+.map-control-list li:first-child {
+  border-left: none;
+}
+
+.selected {
+  /* border: solid 2px #607880; */
+  background-color: #607880;
+  border-radius: 4px;
+  color: #f2eeee;
+}
+
+.inner {
+  padding: 3px 5px 5px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.zmax {
+  z-index: 12 !important;
+}
+
+.selectors {
+  display: grid;
+  grid-template-columns: 65% auto;
+  grid-column-gap: 10px;
+}

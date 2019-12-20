@@ -1,61 +1,72 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import * as queryString from 'query-string'
-import Levers from './Levers/Levers'
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import * as queryString from "query-string";
+import Levers from "./Levers/Levers";
 
-import './Main.css'
+import "./Main.css";
+import MapControl from "./Display/MapControl";
+import MapDisplay from "./Display/MapDisplay";
 
-
+import { FAKE_LEVERS } from "../utils/constants";
 const Main = props => {
+  // const urlValueTest = '10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010'
 
-   const apiCall = async () => {
-      const response = await fetch('http://54.93.129.246:5000/api/v1.0/levers', { method: 'GET' })
-      const fetchedLevers = await response.json()
+  const apiCall = async () => {
+    const response = await fetch("http://54.93.129.246:5000/api/v1.0/levers", {
+      method: "GET"
+    });
+    const fetchedLevers = await response.json();
 
-      let urlData = queryString.parse(props.location.search)
-      if (Object.keys(urlData).length > 0) {
-         urlData = urlData.levers.match(/[0-9]{1,2}/g)     
+    let urlData = queryString.parse(props.location.search);
+    if (Object.keys(urlData).length > 0) {
+      urlData = urlData.levers.match(/[0-9]{1,2}/g);
 
-         fetchedLevers.forEach((e, i) => {
-            e.value = urlData[i]
-         });
-      }
-      else {
-         fetchedLevers.forEach(e => {
-            e.value = '00'
-         });
-      }
-      console.table(fetchedLevers)
+      fetchedLevers.forEach((e, i) => {
+        e.value = urlData[i];
+        e.id = i;
+      });
+    } else {
+      fetchedLevers.forEach((e, i) => {
+        e.value = "00";
+        e.id = i;
+      });
+    }
 
-      props.setAllLevers(fetchedLevers)
-   }
+    console.table(fetchedLevers);
 
-   useEffect(() => {
-      apiCall()
-   } // eslint-disable-next-line
-   ,[])
+    props.setAllLevers(fetchedLevers);
+  };
 
-   return (
-   <div className='main'>
-      <Levers levers={props.levers}/>
-   </div>
-   )
-}
+  useEffect(() => {
+    apiCall();
+    //props.setAllLevers(FAKE_LEVERS);
+  }, []);
+
+  return (
+    <div className="main">
+      <Levers levers={props.levers} />
+      <div className="display">
+        <h4>Selector :</h4>
+        <MapControl />
+        <MapDisplay />
+      </div>
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
-   return {
-      levers: state.levers
-   }
-}
+  return {
+    levers: state.levers
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-   return {
-      setAllLevers: value => dispatch({type: 'SET_ALL_LEVERS', payload: value})
-   }
-}
-
+  return {
+    setAllLevers: value => dispatch({ type: "SET_ALL_LEVERS", payload: value })
+  };
+};
 
 export default connect(
-   mapStateToProps, 
-   mapDispatchToProps
-)(Main)
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);

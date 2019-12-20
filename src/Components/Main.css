@@ -1,4 +1,20 @@
 .main {
-   display: grid;
-   grid-template-columns: minmax(300px, 30%) auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 30%) auto;
+  padding-top: 20px;
+}
+
+.display {
+  padding: 10px 50px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+}
+
+h4 {
+  font-weight: bold;
+  margin-bottom: 5px;
 }

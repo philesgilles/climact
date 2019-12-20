@@ -1,20 +1,14 @@
 .pathway {
-background: #eee;
-padding: 10px;
+  margin-bottom: 25px;
 }
 
-.pathway h5 {
-font-weight: bold;
+.pathway .lead {
+  margin-bottom: 10px;
 }
 
-.pathway div {
-background: #d4d4d4;
-padding: 10px;
-border-radius: 5px;
-}
-
-.pathway div select {
-width: 100%;
-padding: 10px;
-font-size: 18px;
+.pathway > div {
+  background: #add6e4;
+  border: 1px solid #ababab;
+  box-shadow: 0 0 10px #c6c5c5;
+  padding: 10px;
 }
