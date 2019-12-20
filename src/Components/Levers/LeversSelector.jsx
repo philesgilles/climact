@@ -25,9 +25,11 @@ const LeversSelector = props => {
       <div className="d-flex mb-5">
         <div className={type}>
           {props.children ? (
-            <button className="expand-button" onClick={dropDown}>
-              {show ? "-" : "+"}
-            </button>
+            show ? (
+              <i onClick={dropDown} class="fas fa-chevron-down mr"></i>
+            ) : (
+              <i onClick={dropDown} class="fas fa-chevron-right mr"></i>
+            )
           ) : (
             ""
           )}
