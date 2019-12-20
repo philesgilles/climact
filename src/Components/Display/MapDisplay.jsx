@@ -79,7 +79,7 @@ const MapDisplay = () => {
   return (
     <div className="map-display">
       <h4>{"[[MAP TITLE]]"}</h4>
-      <Chart options={options} series={series} type="area" height="400px" />
+      <Chart options={options} series={series} type="area" height="300" />
     </div>
   );
 };
