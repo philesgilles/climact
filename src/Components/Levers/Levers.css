@@ -6,3 +6,20 @@
   margin-bottom: 20px;
   border-bottom: rgb(34, 13, 13);
 }
+
+.headline {
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.groupe-1 {
+  font-size: 18px;
+}
+
+.groupe-2 {
+  font-size: 16px;
+}
+
+.title {
+  font-size: 14px;
+}
