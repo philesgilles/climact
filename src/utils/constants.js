@@ -53,6 +53,14 @@ export const FAKE_LEVERS = [
     title: "Le nom du super levier 3",
     id: 4,
     value: 20
+  },
+  {
+    headline: "Headline",
+    group_1: "le nom du groupe 2",
+    group_2: null,
+    title: "Le nom du super levier",
+    id: 5,
+    value: 4
   }
 ];
 
