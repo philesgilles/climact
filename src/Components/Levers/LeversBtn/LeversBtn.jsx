@@ -23,7 +23,6 @@ const LeversBtn = props => {
   };
 
   useEffect(() => {
-    console.log("value:", value);
     setLeversValue(value);
   }, [value]);
 

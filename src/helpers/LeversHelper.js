@@ -41,6 +41,6 @@ export default data => {
       // });
     });
   });
-  console.log(leversSorted);
+  //console.log(leversSorted);
   return leversSorted;
 };

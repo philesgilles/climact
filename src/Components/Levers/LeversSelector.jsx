@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LeversBtn from "./LeversBtn/LeversBtn";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 import "./LeversSelector.css";
 const LeversSelector = props => {
@@ -17,16 +17,15 @@ const LeversSelector = props => {
   };
   let type = props.type;
   let title = props.title;
-
   useEffect(
     () => {
+      //console.log("leversValue :", leversValue);
       if (props.type === "title") {
         setLeversValue(props.value / 10);
       }
     }, // eslint-disable-next-line
-    [props.value]
+    []
   );
-  console.log("leversValue :", leversValue);
   const dropDown = () => {
     setShow(!show);
   };
