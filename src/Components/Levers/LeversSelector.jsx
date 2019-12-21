@@ -4,12 +4,10 @@ import { connect } from "react-redux";
 
 import "./LeversSelector.css";
 const LeversSelector = props => {
-  const [leversValue, setLeversValue] = useState(props.value);
+  const [leversValue, setLeversValue] = useState(null);
   const [show, setShow] = useState(false);
-  const [selectedLevers, setSelectedLevers] = useState("");
-
-  const handleLeversSelected = (selectedLevers, leversValue) => {
-    setSelectedLevers(selectedLevers);
+  //const [selectedLevers, setSelectedLevers] = useState("");
+  const handleLeversSelected = leversValue => {
     setLeversValue(leversValue);
     if (props.type === "title") {
       props.setThisLevers(props.id, +leversValue * 10);
@@ -22,11 +20,13 @@ const LeversSelector = props => {
 
   useEffect(
     () => {
-      setLeversValue(props.level);
+      if (props.type === "title") {
+        setLeversValue(props.value / 10);
+      }
     }, // eslint-disable-next-line
-    []
+    [props.value]
   );
-
+  console.log("leversValue :", leversValue);
   const dropDown = () => {
     setShow(!show);
   };
@@ -50,23 +50,30 @@ const LeversSelector = props => {
         <div className="all-selectors">
           <LeversBtn
             initialValue={0}
-            isActive={selectedLevers === 0}
+            isActive={leversValue === 0}
+            id={props.id}
+            value={0}
             handleLeversSelected={handleLeversSelected}
           />
           <LeversBtn
             initialValue={1}
-            value={leversValue}
-            isActive={selectedLevers === 1}
+            isActive={leversValue > 0 && leversValue <= 1}
+            id={props.id}
+            value={leversValue > 0 && leversValue <= 1 ? leversValue : 1}
             handleLeversSelected={handleLeversSelected}
           />
           <LeversBtn
             initialValue={2}
-            isActive={selectedLevers === 2}
+            isActive={leversValue > 1 && leversValue <= 2}
+            id={props.id}
+            value={leversValue > 1 && leversValue <= 2 ? leversValue : 2}
             handleLeversSelected={handleLeversSelected}
           />
           <LeversBtn
             initialValue={3}
-            isActive={selectedLevers === 3}
+            isActive={leversValue > 2 && leversValue <= 3}
+            id={props.id}
+            value={leversValue > 2 && leversValue <= 3 ? leversValue : 3}
             handleLeversSelected={handleLeversSelected}
           />
         </div>

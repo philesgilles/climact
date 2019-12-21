@@ -1,24 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
 import "./LeversBtn.css";
 
-const LeversBtn = ({ initialValue, isActive, handleLeversSelected, value }) => {
-  console.log("btn:", value);
-  const [leversValue, setLeversValue] = useState(initialValue);
+const LeversBtn = props => {
+  const { initialValue, isActive, handleLeversSelected, id, value } = props;
+  const [leversValue, setLeversValue] = useState(value);
 
   const handleClick = initialValue => {
-    if (initialValue === 0) setLeversValue(0);
-    else if (isActive)
-      setLeversValue(leversValue =>
-        leversValue < initialValue - 0.8
-          ? initialValue
-          : (leversValue - 0.1).toFixed(1)
-      );
-    else {
-      setLeversValue(initialValue)
+    let newValue = 0;
+    if (initialValue > 0) {
+      if (isActive)
+        newValue =
+          leversValue < initialValue - 0.8
+            ? initialValue
+            : (leversValue - 0.1).toFixed(1);
+      else {
+        newValue = initialValue;
+      }
     }
-    handleLeversSelected(initialValue, leversValue);
+    handleLeversSelected(newValue);
   };
+
+  useEffect(() => {
+    console.log("value:", value);
+    setLeversValue(value);
+  }, [value]);
 
   return (
     <span
@@ -29,5 +36,11 @@ const LeversBtn = ({ initialValue, isActive, handleLeversSelected, value }) => {
     </span>
   );
 };
+
+// const mapStateToProps = state => {
+//   return {
+//     levers: state.stateLevers
+//   };
+// };
 
 export default LeversBtn;

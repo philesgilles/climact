@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as queryString from "query-string";
 import Levers from "./Levers/Levers";
-
+import { FAKE_LEVERS } from "../utils/constants";
 import "./Main.css";
 import MapControl from "./Display/MapControl";
 import MapDisplay from "./Display/MapDisplay";
@@ -33,9 +33,9 @@ const Main = props => {
 
   useEffect(() => {
     if (props.levers.length < 1) {
-      apiCall();
+      //apiCall();
     }
-    //props.setAllLevers(FAKE_LEVERS);
+    props.setAllLevers(FAKE_LEVERS);
   }, []);
 
   return (

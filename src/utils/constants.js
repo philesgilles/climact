@@ -20,23 +20,39 @@ export const FAKE_LEVERS = [
     group_2: "ceci est le groupe 2",
     title: "Le nom du super levier",
     id: 0,
-    level: 2
+    value: 4
+  },
+  {
+    headline: "Headline",
+    group_1: "le nom du groupe 1",
+    group_2: "ceci est le groupe 2",
+    title: "Le nom du super levier2",
+    id: 1,
+    value: 20
+  },
+  {
+    headline: "Headline",
+    group_1: "le nom du groupe 1",
+    group_2: "ceci est le groupe 2",
+    title: "Le nom du super levier3",
+    id: 2,
+    value: 24
   },
   {
     headline: "wazaa2",
     group_1: null,
     group_2: null,
     title: "Le nom du super levier 2",
-    id: 0,
-    level: 2
+    id: 3,
+    value: 18
   },
   {
     headline: "Head My 3",
     group_1: "le nom du groupe 1",
     group_2: null,
     title: "Le nom du super levier 3",
-    id: 0,
-    level: 2
+    id: 4,
+    value: 20
   }
 ];
 
