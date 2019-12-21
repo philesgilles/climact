@@ -48,7 +48,7 @@ export const FAKE_LEVERS = [
   },
   {
     headline: "Head My 3",
-    group_1: "le nom du groupe 1",
+    group_1: "le nom du groupe headmY",
     group_2: null,
     title: "Le nom du super levier 3",
     id: 4,

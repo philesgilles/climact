@@ -12,21 +12,19 @@ const LeversSelector = props => {
     if (props.type === "title") {
       props.setThisLevers(props.id, +leversValue * 10);
     } else {
+      props.reload();
       props.setGroupLevers(props.type, props.title, +leversValue * 10);
     }
   };
-  let type = props.type;
-  let title = props.title;
+  let { type, title } = props;
   useEffect(
     () => {
       //console.log("leversValue :", leversValue);
-      if (props.type === "title") {
-        setLeversValue(props.value / 10);
-      } else {
-        setLeversValue(leversValue);
-      }
+
+      console.log("set from props");
+      setLeversValue(props.value / 10);
     }, // eslint-disable-next-line
-    []
+    [props]
   );
   const dropDown = () => {
     setShow(!show);
