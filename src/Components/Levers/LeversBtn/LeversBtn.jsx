@@ -36,10 +36,10 @@ const LeversBtn = props => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     levers: state.stateLevers
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    levers: state.stateLevers
+  };
+};
 
-export default LeversBtn;
+export default connect(mapStateToProps)(LeversBtn);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import LeversBtn from "./LeversBtn/LeversBtn";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import "./LeversSelector.css";
 const LeversSelector = props => {
   const [leversValue, setLeversValue] = useState(null);
   const [show, setShow] = useState(false);
-  //const [selectedLevers, setSelectedLevers] = useState("");
+  const [allLevers, setAllLevers] = useState(props.levers);
   const handleLeversSelected = leversValue => {
     setLeversValue(leversValue);
     if (props.type === "title") {
@@ -22,6 +22,8 @@ const LeversSelector = props => {
       //console.log("leversValue :", leversValue);
       if (props.type === "title") {
         setLeversValue(props.value / 10);
+      } else {
+        setLeversValue(leversValue);
       }
     }, // eslint-disable-next-line
     []
@@ -83,11 +85,11 @@ const LeversSelector = props => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     levers: state.levers
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    levers: state.stateLevers
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -101,4 +103,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(LeversSelector);
+export default connect(mapStateToProps, mapDispatchToProps)(LeversSelector);

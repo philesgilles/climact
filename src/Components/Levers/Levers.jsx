@@ -8,6 +8,7 @@ import "./Levers.css";
 
 const Levers = props => {
   const [allLevers, setAllLevers] = useState(props.levers);
+  console.log(props);
   useEffect(() => {
     setAllLevers(props.levers);
   }, [props.levers]);
