@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as queryString from "query-string";
 import Levers from "./Levers/Levers";
@@ -8,16 +8,18 @@ import MapControl from "./Display/MapControl";
 import MapDisplay from "./Display/MapDisplay";
 
 const Main = props => {
+  console.log(props);
+  const [mainLevers, setMainLevers] = useState(props.levers);
   const apiCall = async () => {
     const response = await fetch("http://54.93.129.246:5000/api/v1.0/levers", {
       method: "GET"
     });
     let fetchedLevers = await response.json();
 
+    //Take URL Informations
     let urlData = queryString.parse(props.location.search);
     if (Object.keys(urlData).length > 0) {
       urlData = urlData.levers.match(/[0-9]{1,2}/g);
-
       fetchedLevers.forEach((e, i) => {
         e.value = urlData[i];
         e.id = i;
@@ -38,9 +40,27 @@ const Main = props => {
     props.setAllLevers(FAKE_LEVERS);
   }, []);
 
+  const setUrl = () => {
+    console.log("MAIN :", props.levers);
+    let newUrl = "";
+    props.levers.forEach(lever => {
+      if (lever.value < 10) {
+        newUrl = newUrl + "0" + lever.value;
+      } else {
+        newUrl = newUrl + lever.value.toString();
+      }
+    });
+    const param = `?levers=${newUrl}`;
+    props.history.push({
+      pathname: "/",
+      search: param
+    });
+    console.log("URLVALUE : ", newUrl);
+  };
+
   return (
     <div className="main">
-      <Levers levers={props.levers} />
+      <Levers setUrl={setUrl} levers={props.levers} />
       <div className="display">
         <h4>Selector :</h4>
         <MapControl />

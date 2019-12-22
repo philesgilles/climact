@@ -21,7 +21,7 @@ const LeversSelector = props => {
     () => {
       //console.log("leversValue :", leversValue);
 
-      console.log("set from props");
+      //console.log("set from props");
       setLeversValue(props.value / 10);
     }, // eslint-disable-next-line
     [props]

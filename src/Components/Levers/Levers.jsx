@@ -9,13 +9,14 @@ import "./Levers.css";
 const Levers = props => {
   const [allLevers, setAllLevers] = useState(props.levers);
   const [reloadAll, setReloadAll] = useState(false);
-  console.log(props);
+  //console.log(props);
   useEffect(() => {
     setAllLevers(props.levers);
   }, [props.levers]);
 
-  const refreshPage = () => {
-    setReloadAll(!reloadAll);
+  const refreshPage = async () => {
+    await setReloadAll(!reloadAll);
+    props.setUrl();
   };
 
   let levers = <Loading />;
@@ -32,7 +33,7 @@ const Levers = props => {
         }
       });
       headlineValue = (headlineValue / headlinecount).toFixed(0);
-      console.log(`${headline} headlineValue :`, headlineValue);
+
       return (
         <LeversSelector
           key={headline}
