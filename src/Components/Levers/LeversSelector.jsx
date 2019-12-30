@@ -12,9 +12,9 @@ const LeversSelector = props => {
     if (props.type === "title") {
       props.setThisLevers(props.id, +leversValue * 10);
     } else {
-      props.reload();
       props.setGroupLevers(props.type, props.title, +leversValue * 10);
     }
+    props.reload();
   };
   let { type, title } = props;
   useEffect(

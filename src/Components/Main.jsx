@@ -40,10 +40,11 @@ const Main = props => {
     props.setAllLevers(FAKE_LEVERS);
   }, []);
 
-  const setUrl = () => {
-    console.log("MAIN :", props.levers);
+  const setUrl = async () => {
+    const levers = await props.levers;
+
     let newUrl = "";
-    props.levers.forEach(lever => {
+    levers.forEach(lever => {
       if (lever.value < 10) {
         newUrl = newUrl + "0" + lever.value;
       } else {

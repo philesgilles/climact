@@ -32,6 +32,7 @@ const Levers = props => {
           headlinecount++;
         }
       });
+      // Set the value of levers depending of levers inside the groupe
       headlineValue = (headlineValue / headlinecount).toFixed(0);
 
       return (
@@ -52,6 +53,7 @@ const Levers = props => {
                   group1count++;
                 }
               });
+              // Set the value of levers depending of levers inside the groupe
               group1Value = (group1Value / group1count).toFixed(0);
               return (
                 <LeversSelector
@@ -71,6 +73,7 @@ const Levers = props => {
                           group2count++;
                         }
                       });
+                      // Set the value of levers depending of levers inside the groupe
                       group2Value = (group2Value / group2count).toFixed(0);
                       return (
                         <LeversSelector
@@ -87,6 +90,7 @@ const Levers = props => {
                               type="title"
                               id={e.id}
                               value={e.value}
+                              reload={refreshPage}
                             />
                           ))}
                         </LeversSelector>
@@ -99,6 +103,7 @@ const Levers = props => {
                           type="title"
                           id={e.id}
                           value={e.value}
+                          reload={refreshPage}
                         />
                       ));
                     }
@@ -113,6 +118,7 @@ const Levers = props => {
                   type="title"
                   id={e.id}
                   value={e.value}
+                  reload={refreshPage}
                 />
               ));
             }
