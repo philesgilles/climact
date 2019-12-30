@@ -17,15 +17,11 @@ const LeversSelector = props => {
     props.reload();
   };
   let { type, title } = props;
-  useEffect(
-    () => {
-      //console.log("leversValue :", leversValue);
 
-      //console.log("set from props");
-      setLeversValue(props.value / 10);
-    }, // eslint-disable-next-line
-    [props]
-  );
+  // Set Levers value state on props change
+  useEffect(() => {
+    setLeversValue(props.value / 10);
+  }, [props]);
   const dropDown = () => {
     setShow(!show);
   };
