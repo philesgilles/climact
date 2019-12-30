@@ -40,23 +40,25 @@ const Main = props => {
     props.setAllLevers(FAKE_LEVERS);
   }, []);
 
-  const setUrl = async () => {
-    const levers = await props.levers;
-
-    let newUrl = "";
-    levers.forEach(lever => {
-      if (lever.value < 10) {
-        newUrl = newUrl + "0" + lever.value;
-      } else {
-        newUrl = newUrl + lever.value.toString();
-      }
-    });
-    const param = `?levers=${newUrl}`;
-    props.history.push({
-      pathname: "/",
-      search: param
-    });
-    console.log("URLVALUE : ", newUrl);
+  const setUrl = () => {
+    // Passing the function to the callback queue to get executed asynchronously
+    setTimeout(() => {
+      console.log("MAIN :", props.levers);
+      let newUrl = "";
+      props.levers.forEach(lever => {
+        if (lever.value < 10) {
+          newUrl = newUrl + "0" + lever.value;
+        } else {
+          newUrl = newUrl + lever.value.toString();
+        }
+      });
+      const param = `?levers=${newUrl}`;
+      props.history.push({
+        pathname: "/",
+        search: param
+      });
+      console.log("URLVALUE : ", newUrl);
+    }, 0);
   };
 
   return (
